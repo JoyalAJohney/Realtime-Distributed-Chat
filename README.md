@@ -32,7 +32,11 @@ I will be writing articles on multiple features about the project like Configuri
 
 ## Product Demo
 
-https://github.com/JoyalAJohney/Realtime-Distributed-Chat/assets/31545426/648fc2d7-5e48-4172-9398-3fa10f16c8b8
+
+
+https://github.com/JoyalAJohney/Realtime-Distributed-Chat/assets/31545426/db55bf32-1e35-4071-a80e-9f4944614e71
+
+
 
 
 ## About the Project 🌌
