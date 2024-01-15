@@ -30,8 +30,7 @@ I will be writing articles on multiple features about the project like Configuri
 </div>
 
 
-## About the Project
-### Product Demo
+## Product Demo
 
 
 * Multiple Go-fiber servers providing API endpoints (JWT authentication) and WebSocket connections for full-duplex communication. These Go instances are configured under Nginx (reverse proxy) Which act a layer 7 loadbalancer.
