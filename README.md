@@ -9,7 +9,7 @@
 
   <div align="center">
     <br/>
-    High throuput, low latency messaging platform build using Go-fiber and Websockets. Configuring Nginx as a reverse proxy for efficient layer 7 loadbalancing. Redis pub/sub for real-time communication ⚡, Kafka for low-latency processing and Postgres for data storage. Setup infrastructure on AWS using Terraform ☁️ and build CI/CD pipelines using github actions 🛠️.
+    High throuput, low latency messaging platform build using Go-fiber and Websockets. Configured Nginx as a reverse proxy for efficient layer 7 loadbalancing. Redis pub/sub for real-time communication ⚡, Kafka for low-latency processing and Postgres for data storage. Setup infrastructure on AWS using Terraform 🌀 and build CI/CD pipelines using github actions.
   </div>
 
   <br />
