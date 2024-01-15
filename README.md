@@ -3,6 +3,8 @@
 
 This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Infrastructure** (Terraform, CI/CD) code for building a distributed real-time scalable messaging platform. If you are a developer seeking to learn system design or even looking for an end-to-end System, I hope this project be useful ❤️
 
+<img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
+
 <div align="center">
     <br />
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
@@ -21,44 +23,6 @@ This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Inf
     *
     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge">
 </div>
-
-
-
-
-<img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
-<div align="center">
-
-  <h1>Realtime Distributed Messaging Platform 🚀</h1>
-  <img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
-
-  <div align="center">
-    <br/>
-    High throuput, low latency messaging platform build using Go-fiber and Websockets. Configured Nginx as a reverse proxy for efficient layer 7 loadbalancing 🌌. Redis pub/sub for real-time communication ⚡, Kafka for low-latency processing and Postgres for data storage. Setup infrastructure on AWS using Terraform 🌀 and build CI/CD pipelines using github actions.
-  </div>
-
-  <br />
-
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
-  *
-  <img src="https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx Badge">
-  *
-  <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Golang Badge">
-  *
-  <img src="https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white" alt="Redis Badge">
-  *
-  <img src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white" alt="Postgres Badge">
-  *
-  <img src="https://img.shields.io/badge/Apache%20Kafka-000?style=for-the-badge&logo=apachekafka" alt="Kafka Badge">
-  *
-  <img src="https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform Badge">
-  *
-  <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge">
-  *
-  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS Badge">
-
-</div>
-
-
   
 
 ## Setting Up
