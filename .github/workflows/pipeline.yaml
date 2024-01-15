@@ -1,0 +1,97 @@
+name: Deploy Infrastructure
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  Deploy-Infrastructure:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_wrapper: false
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.PROVIDE_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PROVIDE_AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Plan
+        run: |
+          cd terraform
+          terraform plan
+
+      - name: Terraform Apply
+        run: |
+          cd terraform
+          terraform apply -auto-approve
+
+      - name: Fetch Elastic IP from Terraform Output
+        id: fetch_ip
+        run: |
+          cd terraform
+          echo "EC2_IP=$(terraform output -raw ec2_ip)" >> $GITHUB_ENV
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$AWS_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ env.EC2_IP }} >> ~/.ssh/known_hosts
+        env:
+          AWS_SSH_PRIVATE_KEY: ${{ secrets.PROVIDE_AWS_SSH_PRIVATE_KEY }}
+
+      - name: Clone and Deploy to EC2 (First Time)
+        run: |
+          ssh -t ami_type@${{ env.EC2_IP }} << 'EOF'
+          
+          if [ ! -d '/app_location/.git' ]; then
+
+            # Install dependencies
+            sudo apt-get update && sudo apt-get install -y git docker-compose awscli && 
+            
+            # Clone repo
+            git clone https://repo_link app && 
+            cd /app_location && 
+
+            if aws s3 ls "s3://app-bucket-name/.env"; then
+              echo "Copying .env file from S3 bucket"
+              aws s3 cp "s3://app-bucket-name/.env" /app_location/.env
+              sudo docker-compose up --build -d;
+            else
+              echo ".env file not found, Skipping docker build process"
+            fi
+
+          fi
+          EOF
+
+      - name: Update and Deploy to EC2 (Subsequent Times)
+        run: |
+          ssh -t ami_type@${{ env.EC2_IP }} << 'EOF'
+          
+          if [ -d '/app_location/.git' ]; then
+            cd /app_location && git pull
+
+            if aws s3 ls "s3://app-bucket-name/.env"; then
+              echo "Copying .env file from S3 bucket"
+              aws s3 cp "s3://app-bucket-name/.env" /app_location/.env
+              
+              sudo docker-compose down && sudo docker-compose up --build -d;
+            else
+              echo ".env file not found, Skipping docker build process"
+            fi
+
+          fi
+          EOF
