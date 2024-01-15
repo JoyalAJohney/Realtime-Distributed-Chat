@@ -1,9 +1,14 @@
 
-# Real-time Distributed Messaging Platform
+# Real-time Distributed Chat
 
-This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Infrastructure** (Terraform, CI/CD) code for building a distributed real-time scalable messaging platform. If you are a developer seeking to learn system design or even looking for an end-to-end System, I hope this project be useful ❤️
+This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Infrastructure** (Terraform, CI/CD) code for building a distributed, real-time, scalable messaging platform. If you are a developer seeking to learn system design or even looking to find how end-to-end projects are build, I hope you find this useful ❤️
 
+<br />
+I will be writing articles on multiple features about the project like Configuring nginx as a reverse proxy for loadbalancing, TLS/SSL certificate for HTTPS communication, Setting up infrastructure using Terraform etc. So do follow me on HashNode (https://joyalajohney.hashnode.dev/). if you like the repo, please consider giving it a ⭐!
+
+.
 <img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
+
 
 <div align="center">
     <br />
@@ -23,6 +28,23 @@ This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Inf
     *
     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge">
 </div>
+
+
+## About the Project
+### Product Demo
+
+
+* Multiple Go-fiber servers providing API endpoints (JWT authentication) and WebSocket connections for full-duplex communication. These Go instances are configured under Nginx (reverse proxy) Which act a layer 7 loadbalancer.
+  
+* To propagate messages for users within the same room but connected to multiple instances, we utilize Redis (Pub/Sub model). Each instance is subscribed to a particular channel in Redis and gets notified on receiving messages. All messages are stored in Postgres.
+  
+* The database can undergo a heavy write load if we receive 100 messages/sec. To avoid this, we use kafka, a message stream designed for high throughput and low latency processing. A consumer (Go instance) will consume messages from kafka in batches and writes them to postgres.
+  
+* The frontend for application is build using React.js and served in an Nginx container. All the nodes are containarized using Docker and Configured using Docker-Compose. We only expose the Reverse-Proxy (Nginx) to the outside world. Al requests are redirected from there.
+  
+* Next step is to deploy the application on AWS. A CI/CD pipeline is implemented using github actions. We use Terraform for setting up Infrastructure on AWS, configuring an EC2 instance, S3 storage, Security groups and Elastic IP. This is ntegrated into the CI/CD pipeline.
+  
+* For secure HTTPS access, Issue certificate and configure it in Nginx for secure TLS/SSL communication. 
   
 
 ## Setting Up
