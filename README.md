@@ -3,7 +3,8 @@
 
 This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Infrastructure** (Terraform, CI/CD) code for building a distributed real-time scalable messaging platform. If you are a developer seeking to learn system design or even looking for an end-to-end System, I hope this project be useful ❤️
 
-<div>
+<div align="center">
+    <br />
     <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
     *
     <img src="https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white" alt="Nginx Badge">
