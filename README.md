@@ -97,4 +97,4 @@ Execute the below command to build the application containers
 ```bash
 $ docker-compose up --build
 ```
-If the application starts perfectly fine, you should be able to head over to http://NGINX_HOST:NGINX_PORT/
+If the application starts perfectly fine, you should be able to head over to http://localhost:8080/
