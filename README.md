@@ -32,6 +32,10 @@ I will be writing articles on multiple features about the project like Configuri
 
 ## Product Demo
 
+https://github.com/JoyalAJohney/Realtime-Distributed-Chat/assets/31545426/648fc2d7-5e48-4172-9398-3fa10f16c8b8
+
+
+## About the Project 🌌
 
 * Multiple Go-fiber servers providing API endpoints (JWT authentication) and WebSocket connections for full-duplex communication. These Go instances are configured under Nginx (reverse proxy) Which act a layer 7 loadbalancer.
   
@@ -46,7 +50,7 @@ I will be writing articles on multiple features about the project like Configuri
 * For secure HTTPS access, Issue certificate and configure it in Nginx for secure TLS/SSL communication. 
   
 
-## Setting Up
+## Setting Up 🔧
 
 * Create a .env file from the env.sample file.
 * Fill in the values based on your required configuration.
