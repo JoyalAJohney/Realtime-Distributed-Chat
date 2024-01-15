@@ -30,13 +30,9 @@ I will be writing articles on multiple features about the project like Configuri
 </div>
 
 
-## Product Demo
-
-
+## Product Demo 🚀
 
 https://github.com/JoyalAJohney/Realtime-Distributed-Chat/assets/31545426/db55bf32-1e35-4071-a80e-9f4944614e71
-
-
 
 
 ## About the Project 🌌
