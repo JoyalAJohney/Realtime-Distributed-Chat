@@ -7,8 +7,6 @@
   <h3 align="center">Realtime Distributed Chat</h3>
 
   <p align="center">
-    Real-time distributed chat that processes message with very high throughput and low latency
-    <br />
     <a href="https://github.com/JoyalAJohney/Distributed-Chat-Backend/"><strong>Explore the docs »</strong></a>
     <br />
   </p>
@@ -24,7 +22,6 @@
 
 ## Setting Up
 
-### Env changes
 * Create a .env file from the env.sample file.
 * Fill in the values based on your required configuration.
 * Make sure that the .env file is in the same level as docker-compose.yml file
@@ -60,32 +57,6 @@ NGINX_HOST=localhost
 SERVER_PORT=8080
 ```
 
-### TLS/SSL setup
-
-If you do not have a TLS/SSL certificate setup, disable or comment these code changes
-
-docker-compose.yml
-```bash
-"${NGINX_SSL_PORT}:443"
-
-/etc/letsencrypt:/etc/letsencrypt:ro
-```
-
-nginx.conf
-
-```bash
-# Remove this code
-server {
-    listen 80;
-
-    # Redirect all HTTP requests to HTTPS
-    return 301 https://$host$request_uri;
-}
-
-# Remove ssl_certificate and ssl_certificate_key
-```
-
-
 ## Running the app
 
 Execute the below command to build the application containers
@@ -93,19 +64,3 @@ Execute the below command to build the application containers
 $ docker-compose up --build
 ```
 If the application starts perfectly fine, you should be able to head over to http://NGINX_HOST:NGINX_PORT/
-
-
-## Testing
-* Make sure you are running on node version 16 or above
-* Change ```POSTGRES_HOST=localhost``` in .env file when running tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
