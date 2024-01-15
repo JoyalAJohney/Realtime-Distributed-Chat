@@ -1,10 +1,18 @@
 
 <div align="center">
-  <a href="https://github.com/JoyalAJohney/Distributed-Chat-Backend/">
+<!--   <a href="https://github.com/JoyalAJohney/Distributed-Chat-Backend/">
     <img src="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
-  <h2 align="center">Realtime Distributed Messaging Platform 🚀</h2>
+  <h1 align="center">Realtime Distributed Messaging Platform 🚀</h1>
+  <img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
+
+  <div align="center">
+    <br/>
+    High throuput, low latency messaging platform build using Go-fiber and Websockets. Configuring Nginx as a reverse proxy for efficient layer 7 loadbalancing. Redis pub/sub for real-time communication ⚡, Kafka for low-latency processing and Postgres for data storage. Setup infrastructure on AWS using Terraform ☁️ and build CI/CD pipelines using github actions 🛠️.
+  </div>
+
+  <br />
 
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Badge">
   *
@@ -24,11 +32,9 @@
   *
   <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS Badge">
 
-  <div align="center">
-    <br/>
-    High throuput, low latency messaging platform build using Go-fiber and Websockets. Configuring Nginx as a reverse proxy for efficient layer 7 loadbalancing. Redis pub/sub for real-time communication ⚡, Kafka for low-latency processing and Postgres for data storage. Setup infrastructure on AWS using Terraform ☁️ and build CI/CD pipelines using github actions 🛠️.
-  </div>
 </div>
+
+
   
 
 ## Setting Up
