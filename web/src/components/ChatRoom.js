@@ -75,6 +75,22 @@ function ChatRoom() {
     ws.current.send(JSON.stringify({ type: 'leave_room', room: roomName }));
     navigate('/join');
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
+
+  function messageWithLineBreaks(message) {
+    return message.split('\n').map((line, index, array) => (
+      index === array.length - 1 ? line : <React.Fragment key={index}>{line}<br/></React.Fragment>
+    ));
+  }
+  
+  
   
 
   return (
@@ -106,7 +122,7 @@ function ChatRoom() {
               <div className="message-header">
                 {isOwnMessage ? <span></span> : <span className="sender-name">{msg.senderName}</span>}
               </div>
-              <div className="message-content">{msg.content}</div>
+              <div className="message-content">{messageWithLineBreaks(msg.content)}</div>
               <div className="message-footer">
               {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}
               </div>
@@ -115,10 +131,11 @@ function ChatRoom() {
       </div>
       <div className="chat-room-footer">
         <button className="toggle-emoji-picker" onClick={handleEmojiPickerToggle}>😃</button>
-        <input 
-          type="text" 
+        <textarea
+          rows={1}
           value={input} 
           onChange={(e) => setInput(e.target.value)} 
+          onKeyDown={handleKeyDown}
           className="message-input"
           placeholder="What's on your mind?"
         />

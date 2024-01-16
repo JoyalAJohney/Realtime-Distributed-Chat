@@ -13,7 +13,7 @@ ENV REACT_APP_NGINX_HOST=$NGINX_HOST
 ENV REACT_APP_NGINX_PORT=$NGINX_PORT
 
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install --verbose
 COPY . ./
 RUN npm run build
 
