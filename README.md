@@ -87,6 +87,8 @@ NGINX_HOST=localhost
 SERVER_PORT=8080
 ```
 
+I have only shared the template code for **Infrastructre** (pipeline & terraform). You need to configure the AWS credentials, Terraform, and Pipeline according to your requirements. Additionally, you'll have to set up TLS/SSL for HTTPS (since all of this information is sensitive, it has been omitted)
+
 ## Running the app
 
 Execute the below command to build the application containers
