@@ -6,6 +6,11 @@ import (
 	"os"
 	"sync"
 
+	"net/http"
+	"encoding/json"
+	"bytes"
+	"strings"
+
 	"realtime-chat/src/cache"
 	"realtime-chat/src/kafka"
 	"realtime-chat/src/models"
@@ -63,14 +68,47 @@ func BroadcastToRoom(room string, message models.Message) {
 }
 
 func SendMessageToRoom(message models.Message, user *models.User) {
-	key := "room:" + message.Room
-	if !isUserInRoom(key, user) {
-		utils.SendErrorMessage(user.Connection, "You are not a member of this room")
-		return
-	}
 	cache.PublishMessage(message.Room, &message)
 	kafka.PublishMessage(message)
+
+	if strings.HasPrefix(message.Content, "@superchat") {
+		response := GetResponseFromLLM(message.Content)
+		log.Printf("Response from LLM")
+		llmMessage := models.Message{
+			Content: response,
+			Sender: "SuperChat",
+			SenderName: "SuperChat",
+			Room: message.Room,
+			Type: message.Type,
+			Server: os.Getenv("SERVER_NAME"),
+		}
+		cache.PublishMessage(message.Room, &llmMessage)
+	}
 }
+
+
+func GetResponseFromLLM(prompt string) string {
+    requestBody := []byte(`{"model": "llama2", "prompt": "` + prompt + `", "stream": false}`)
+    resp, err := http.Post("http://ollama:11434/api/generate", "application/json", bytes.NewBuffer(requestBody))
+    if err != nil {
+        log.Printf("Error calling AI service: %v", err)
+        return "Error generating response"
+    }
+
+    defer resp.Body.Close()
+    var response struct {
+        Answer string `json:"response"`
+    }
+
+    if err := json.NewDecoder(resp.Body).Decode(&response); err != nil {
+        log.Printf("Error decoding AI response: %v", err)
+        return "Error processing response"
+    }
+	log.Printf("RAW Response from LLM: %+v", response)
+
+    return response.Answer
+}
+
 
 func LeaveRoom(room string, user *models.User) {
 	key := "room:" + room
