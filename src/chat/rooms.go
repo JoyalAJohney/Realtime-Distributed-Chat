@@ -88,8 +88,17 @@ func SendMessageToRoom(message models.Message, user *models.User) {
 
 
 func GetResponseFromLLM(prompt string) string {
-    requestBody := []byte(`{"model": "llama2", "prompt": "` + prompt + `", "stream": false}`)
+    requestBody := []byte(`
+	{
+		"model": "llama2", 
+		"prompt": "` + prompt + `", 
+		"stream": false, 
+		"temperature": 0.8,
+		"max_new_tokens": 75 
+	}`)
+
     resp, err := http.Post("http://ollama:11434/api/generate", "application/json", bytes.NewBuffer(requestBody))
+	
     if err != nil {
         log.Printf("Error calling AI service: %v", err)
         return "Error generating response"
