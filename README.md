@@ -83,6 +83,9 @@ NGINX_ENV=local
 NGINX_PORT=8080
 NGINX_HOST=localhost
 
+# LLM config
+LLM_PORT=11434
+
 # Backend Servers
 SERVER_PORT=8080
 ```
@@ -90,7 +93,9 @@ SERVER_PORT=8080
 I have only shared the template code for **Infrastructre** (pipeline & terraform). You need to configure the AWS credentials, Terraform, and Pipeline according to your requirements. Additionally, you'll have to set up TLS/SSL for HTTPS (since all of this information is sensitive, it has been omitted)
 
 ## Running the app
-
+```
+if you wish to run llm model, uncomment the changes from docker-compose (llama 2 model requires almost 3.6GB size)
+```
 Execute the below command to build the application containers
 ```bash
 $ docker-compose up --build
