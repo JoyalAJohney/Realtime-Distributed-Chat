@@ -1,5 +1,7 @@
 version: '2.1'
 services:
+
+  # Uncomment this to enable superchat/llm in the app
   # ollama:
   #   container_name: llm-model
   #   build: ./llm
