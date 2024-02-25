@@ -29,6 +29,9 @@ I will be writing articles on multiple features about the project like Configuri
     <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge">
 </div>
 
+## Architecture Diagram 🌠
+<img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/diagrams_image.png" alt="landing page">
+
 
 ## Product Demo 🚀
 
