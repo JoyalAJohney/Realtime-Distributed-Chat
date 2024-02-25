@@ -7,7 +7,7 @@ This repo contains the **frontend** (React.js), **backend** (Go-Fiber) and **Inf
 I will be writing articles on multiple features about the project like Configuring nginx as a reverse proxy for loadbalancing, TLS/SSL certificate for HTTPS communication, Setting up infrastructure using Terraform etc. So do follow me on HashNode (https://joyalajohney.hashnode.dev/). if you like the repo, please consider giving it a ⭐!
 
 .
-<img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/babylon.png" alt="landing page">
+<img src="https://raw.githubusercontent.com/JoyalAJohney/Realtime-Distributed-Chat/main/assets/home.png" alt="landing page">
 
 
 <div align="center">
